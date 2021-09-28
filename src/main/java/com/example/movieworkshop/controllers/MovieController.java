@@ -56,7 +56,7 @@ public class MovieController {
     }
 
     //3.7 (Advanced) /longest
-    //http://localhost:8080/filter?character=e&count=2
+    //http://localhost:8080/longest?genre1=action&genre2=comedy
     @GetMapping("/longest")
     public String longest(@RequestParam String genre1, @RequestParam String genre2){
         return movieService.longest("action", "comedy");
