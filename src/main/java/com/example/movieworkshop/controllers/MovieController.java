@@ -49,7 +49,7 @@ public class MovieController {
     }
 
     //3.6 (Advanced) filter?char='x'amount='n'
-    //can't get this to work in the browser, not sure how to write the http address
+    //http://localhost:8080/filter?character=e&count=2
     @GetMapping("/filter")
     public String filter(@RequestParam char character, @RequestParam int count){
         return movieService.filter('e', 2);
