@@ -48,11 +48,18 @@ public class MovieController {
         return movieService.howManyWonAnAward();
     }
 
-    //3.6 (Advanced) filter?char='x'amount='n'
+    //3.6 (Advanced) /filter
     //http://localhost:8080/filter?character=e&count=2
     @GetMapping("/filter")
     public String filter(@RequestParam char character, @RequestParam int count){
         return movieService.filter('e', 2);
+    }
+
+    //3.7 (Advanced) /longest
+    //http://localhost:8080/filter?character=e&count=2
+    @GetMapping("/longest")
+    public String longest(@RequestParam String genre1, @RequestParam String genre2){
+        return movieService.longest("action", "comedy");
     }
 
 }
