@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.FileNotFoundException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 @RestController
@@ -60,6 +61,12 @@ public class MovieController {
     @GetMapping("/longest")
     public String longest(@RequestParam String genre1, @RequestParam String genre2){
         return movieService.longest("action", "comedy");
+    }
+
+    //advanced SQL
+    @GetMapping("/displayAwardMovies")
+    public String displayAwardMovies() throws FileNotFoundException, SQLException {
+        return movieService.displayAwardMovies("comedy");
     }
 
 }

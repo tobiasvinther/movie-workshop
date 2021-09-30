@@ -1,11 +1,14 @@
 package com.example.movieworkshop.services;
 
+import com.example.movieworkshop.database.JDBCwriter1;
 import com.example.movieworkshop.models.Movie;
 import com.example.movieworkshop.repositories.MovieDataRepository;
 import java.io.FileNotFoundException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
+//import com.example.movieworkshop.database.JDBCwriter;
 
 public class MovieService {
 
@@ -94,7 +97,6 @@ public class MovieService {
         String resultString = "Movies with the letter '" + character +"' " + amount + " times:<br>" ;
         for(Movie movie : filteredMovieList) {
             resultString = resultString + movie.getTitle() + "<br>";
-
         }
         return resultString;
     }
@@ -126,5 +128,11 @@ public class MovieService {
                     + genre2AverageLength + " min vs " + genre1AverageLength + " min)";
         } else return genre1 + " and " + genre2 + " are the same length on average (" + genre1AverageLength + " min)";
     }
+
+    public String displayAwardMovies(String genre) throws FileNotFoundException {
+        JDBCwriter1 JDBCwriter = new JDBCwriter1();
+        return genre + " movies with awards:<br>" + JDBCwriter.getMoviesWithAwards(genre);
+    }
+
 
 }
